@@ -7,12 +7,20 @@ license = "MIT"
 packages = [
     { include = "qqq" }
 ]
+
 [tool.poetry.dependencies]
 python = "~3.6"
 click = "^7.1.2"
+requests = "^2.24.0"
+gitpython = "^3.1.3"
+click-spinner = "^0.1.10"
+shortuuid = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 kac = "^0.3.0"
+
+[tool.poetry.scripts]
+qqq = "qqq.qqq:cli"
 
 [build-system]
 requires = ["poetry>=0.12"]
