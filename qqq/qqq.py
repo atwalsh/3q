@@ -89,12 +89,14 @@ def send(github_username, admins):
 
     # Generate new repo name
     repo_name = f'{github_username}-{shortuuid.uuid()}'
+    # Ask user for branch name
+    branch_name = click.prompt('Enter the branch name on the remote repository', default='master')
 
     # Confirm with user
     click.echo(f'Preparing to send the current branch to {github_username}...')
     _repo = f''
     _msg = f'''Are you sure you want to send the current branch to {user["login"]} ({user["name"]})? This will:
-    \t1. Take the `{repo.active_branch}` branch and force push to {auth_user}/{repo_name} on GitHub (private)
+    \t1. Take the current `{repo.active_branch}` branch and force push to {auth_user}/{repo_name} on GitHub (private)
     \t2. Invite {github_username} as a collaborator\n'''
     click.confirm(click.style(_msg, fg='cyan'), abort=True)
 
@@ -110,7 +112,7 @@ def send(github_username, admins):
         _tmp_remote_name = secrets.token_urlsafe()
         _tmp_remote_url = f'https://{auth_token}:x-oauth-basic@github.com/{auth_user}/{repo_name}.git'
         new_remote = repo.create_remote(_tmp_remote_name, _tmp_remote_url)
-        new_remote.push()
+        new_remote.push(f'{repo.head.ref}:{branch_name}')
         repo.delete_remote(_tmp_remote_name)
         if not gh.add_collaborator(repo_name, user["login"]):
             click.echo(click.style(f'Error inviting {user["login"]}.', fg='red'))
