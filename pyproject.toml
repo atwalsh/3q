@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "3q"
+version = "0.1.0"
+description = ""
+authors = ["Adam Walsh <adamtwalsh@gmail.com>"]
+license = "MIT"
+packages = [
+    { include = "qqq" }
+]
+[tool.poetry.dependencies]
+python = "~3.6"
+click = "^7.1.2"
+
+[tool.poetry.dev-dependencies]
+kac = "^0.3.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
