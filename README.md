@@ -18,16 +18,16 @@ pip install 3q
 
 2. Change directories to the git repository you want to share
 3. Checkout the branch you want to share
-4. Run `qqq share` to make a new private repository on GitHub:
+4. Run `qqq send` to make a new private repository on GitHub:
    ```bash
    # Share the currently checked out branch with 
    # GitHub user `atwalsh`
    
-   qqq share atwalsh
+   qqq send atwalsh
    ``` 
    
 ### Options
-#### `share`
+#### `send`
 - `-a` Adds an additional admin collaborator to the GitHub repository
   - Send multiple `-a` options to add multiple admin collaborators:
     ```bash

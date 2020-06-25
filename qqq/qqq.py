@@ -59,7 +59,6 @@ def login(user, token):
 @click.argument('github_username')
 @click.option('-a', '--admins', multiple=True, required=False)
 def send(github_username, admins):
-    click.echo(admins)
     config_path = f'{click.get_app_dir(QQQ)}/{CONFIG_FILE}'
     # Make sure config file exists
     if not Path(config_path).is_file():
