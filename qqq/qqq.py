@@ -98,6 +98,9 @@ def send(github_username, admins):
     _msg = f'''Are you sure you want to send the current branch to {user["login"]} ({user["name"]})? This will:
     \t1. Take the current `{repo.active_branch}` branch and force push to {auth_user}/{repo_name} on GitHub (private)
     \t2. Invite {github_username} as a collaborator\n'''
+    if admins:
+        _msg += f'\t3. Invite {", ".join([str(a) for a in admins])} as {"an " if len(admins) == 1 else ""}' \
+                f'admin collaborator{"s" if len(admins) > 1 else ""}\n'
     click.confirm(click.style(_msg, fg='cyan'), abort=True)
 
     click.echo(f'Creating repo on GitHub and inviting {user["login"]}...')
