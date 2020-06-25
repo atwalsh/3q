@@ -2,6 +2,11 @@
 
 Easily share your current git branch with users on GitHub.
 
+### Install
+```bash
+pip install 3q
+```
+
 ### Requirements
 - A GitHub Personal Access Token with `repo` permissions
 
