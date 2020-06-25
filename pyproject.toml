@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "3q"
-version = "0.1.2"
+version = "0.1.3"
 description = ""
 authors = ["Adam Walsh <adamtwalsh@gmail.com>"]
 license = "MIT"
