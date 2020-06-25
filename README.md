@@ -1,6 +1,6 @@
 # QQQ
 
-Easily share your current git branch with users on GitHub. 
+Easily share your current git branch with users on GitHub.
 
 ### Requirements
 - A GitHub Personal Access Token with `repo` permissions
@@ -31,3 +31,10 @@ Easily share your current git branch with users on GitHub.
     
     qqq send atwalsh -a MedShift -a GridResearch
     ```
+
+### Inspiration
+[a], [b], [c]
+
+[a]: https://www.reddit.com/r/wallstreetbets/comments/f7xj7e/based_on_fridays_post_the_sub_has_lost_around/
+[b]: https://www.reddit.com/r/wallstreetbets/comments/9qe256/someone_mentioned_my_last_play_wasnt_a_true_fd/
+[c]: https://www.reddit.com/r/wallstreetbets/comments/7uu2lk/when_qqq_dips_1/
