@@ -188,8 +188,8 @@ python-versions = "*"
 version = "0.2.5"
 
 [metadata]
-content-hash = "3ff115cbae88f09413d88e64d0fee2086937e20f237d0ab8e4c9825e7b3b46ca"
-python-versions = "~3.6"
+content-hash = "5b379933c1169c5ef3362968b1f127a04183442fbada54d88bf93c71d547fd6b"
+python-versions = "^3.6"
 
 [metadata.files]
 certifi = [
