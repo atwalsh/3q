@@ -79,6 +79,7 @@ def send(github_username, admins):
         repo = Repo(os.getcwd())
     except InvalidGitRepositoryError:
         click.echo(click.style('Please use qqq from within a valid git repository.', fg='red'))
+        raise click.Abort
     if repo.bare:
         # Confirm the user wants to use an empty repo
         click.confirm('Repository appears to be bare, continue?', abort=True)
