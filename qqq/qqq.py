@@ -7,6 +7,7 @@ import click
 import click_spinner
 import shortuuid
 from git import Repo
+from git.exc import InvalidGitRepositoryError
 
 from .github import GitHub
 
@@ -60,6 +61,16 @@ def login(user, token):
 @click.option('-a', '--admins', multiple=True, required=False)
 def send(github_username, admins):
     config_path = f'{click.get_app_dir(QQQ)}/{CONFIG_FILE}'
+
+    # Create the repo object
+    try:
+        repo = Repo(os.getcwd())
+    except InvalidGitRepositoryError:
+        click.echo(click.style('Please use qqq from within a valid git repository.', fg='red'))
+    if repo.bare:
+        # Confirm the user wants to use an empty repo
+        click.confirm('Repository appears to be bare, continue?', abort=True)
+
     # Make sure config file exists
     if not Path(config_path).is_file():
         click.echo(click.style('Config files does not exist. Run `qqq login`.', fg='red'))
