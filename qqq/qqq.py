@@ -17,13 +17,24 @@ QQQ = 'qqq'
 
 @click.group()
 def cli():
+    """
+    QQQ allows you to easily share your currently checked-out git branch with
+    other people via GitHub.
+
+    How to use QQQ:\n
+    1. Obtain a personal access token from GitHub with the full `repo` permission.\n
+    2. Use `qqq login` to save your GitHub access token to the QQQ config file.\n
+    3. `cd` to your local git repository and run `qqq send` to share the currently
+        checked-out branch with other GitHub users.
+    """
     pass
 
 
 @cli.command()
-@click.option('-u', '--user', 'user')
-@click.option('-t', '--token', 'token')
+@click.option('-u', '--user', 'user', help='Your GitHub username.')
+@click.option('-t', '--token', 'token', help='Your GitHub personal access token.')
 def login(user, token):
+    """Save your GitHub access token."""
     app_dir = click.get_app_dir(QQQ)
     config_path = f'{app_dir}/{CONFIG_FILE}'
 
@@ -58,8 +69,9 @@ def login(user, token):
 
 @cli.command()
 @click.argument('github_username')
-@click.option('-a', '--admins', multiple=True, required=False)
+@click.option('-a', '--admins', multiple=True, required=False, help='GitHub users to invite as admin collaborators.')
 def send(github_username, admins):
+    """Share your local branch with other GitHub users."""
     config_path = f'{click.get_app_dir(QQQ)}/{CONFIG_FILE}'
 
     # Create the repo object
@@ -91,12 +103,6 @@ def send(github_username, admins):
     if user is None:
         click.echo(f'Could not find GitHub user {github_username}.')
         raise click.Abort
-
-    # Create the repo object
-    repo = Repo(os.getcwd())
-    if repo.bare:
-        # Confirm the user wants to use an empty repo
-        click.confirm('Repository appears to be bare, continue?', abort=True)
 
     # Generate new repo name
     repo_name = f'{github_username}-{shortuuid.uuid()}'
