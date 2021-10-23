@@ -1,9 +1,9 @@
 # QQQ
 
-Easily share your current git branch with users on GitHub.
+Share local `git` branches via GitHub.
 
 ### Install
-```bash
+```console
 pip install 3q
 ```
 
@@ -19,7 +19,7 @@ pip install 3q
 2. Change directories to the git repository you want to share
 3. Checkout the branch you want to share
 4. Run `qqq send` to make a new private repository on GitHub:
-   ```bash
+   ```console
    # Share the currently checked out branch with 
    # GitHub user `atwalsh`
    
