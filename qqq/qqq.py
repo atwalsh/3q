@@ -150,3 +150,16 @@ def send(github_username, admins):
         else:
             click.echo(click.style(f'Could not find {admin_username}.', fg='red'))
     click.echo('Done!')
+
+
+@cli.command()
+def whoami():
+    """Get the logged-in GitHub user."""
+    app_dir = click.get_app_dir(QQQ)
+    config_path = f'{app_dir}/{CONFIG_FILE}'
+    if not Path(config_path).is_file():
+        click.echo(f'Config file does not exist! Run `qqq login` first.')
+
+    cp = configparser.ConfigParser()
+    cp.read(config_path)
+    click.echo(cp['auth']['user'])
